@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, Navigate } from "react-router-dom";
+import  Gallery  from "./components/pages/gallery";
+import  About  from "./components/pages/about";
+import  Store  from "./components/pages/store";
+import  Contact  from "./components/pages/contact";
+import  Home  from "./components/pages/home";
+import  NotFound  from "./components/pages/notfound";
+
+import { TemaPrava, useTheme } from "./components/context/ThemeContext";
+
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TemaPrava>
+      <AppContent />
+    </TemaPrava>
+  );
+}
+
+function AppContent() {
+  const { darkTheme, toggleTheme } = useTheme();
+
+  const themee = createTheme({
+    palette: {
+      mode: darkTheme ? "dark" : "light",
+    },
+    // toggleTheme: toggleTheme
+  });
+
+  return (
+    <ThemeProvider theme={themee}>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/store" element={<Store />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+    </ThemeProvider>
   );
 }
 
