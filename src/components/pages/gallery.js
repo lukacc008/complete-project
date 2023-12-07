@@ -5,7 +5,9 @@ import ResponsiveDrawer from "../sidebar";
 export default function Gallery() {
   return (
     <div>
-      <ResponsiveDrawer />
+      <ResponsiveDrawer>
+        <h1>Gallery page</h1>
+      </ResponsiveDrawer>
       <Header />
     </div>
   );

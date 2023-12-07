@@ -5,7 +5,9 @@ import ResponsiveDrawer from "../sidebar";
 export default function Contact() {
   return (
     <div>
-      <ResponsiveDrawer />
+      <ResponsiveDrawer>
+        <h1>Contact page</h1>
+      </ResponsiveDrawer>
       <Header />
     </div>
   );

@@ -3,6 +3,7 @@ import  Gallery  from "./components/pages/gallery";
 import  About  from "./components/pages/about";
 import  Store  from "./components/pages/store";
 import  Contact  from "./components/pages/contact";
+import Users from "./components/pages/users";
 import  Home  from "./components/pages/home";
 import  NotFound  from "./components/pages/notfound";
 
@@ -38,6 +39,7 @@ function AppContent() {
           <Route path="/about" element={<About />} />
           <Route path="/store" element={<Store />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/users" element={<Users />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

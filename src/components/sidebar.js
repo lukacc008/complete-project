@@ -1,4 +1,6 @@
-import * as React from 'react';
+// import * as React from 'react';
+
+import React, { useState } from 'react';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -20,18 +22,22 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
 import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 
 import {Link} from 'react-router-dom';
+
+import Content from './content';
 
 
 const drawerWidth = 240;
 
 export default function ResponsiveDrawer(props) {
-  // const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+    console.log("Mobile open:", mobileOpen);
   };
 
   const drawer = (
@@ -45,6 +51,7 @@ export default function ResponsiveDrawer(props) {
           { text: 'About us', route: '/about', icon: <InfoOutlinedIcon /> },
           { text: 'Store', route: '/store', icon: <LocalGroceryStoreOutlinedIcon /> },
           { text: 'Contact', route: '/contact', icon: <CallOutlinedIcon /> },
+          { text: 'Users', route: '/users', icon: <PeopleAltOutlinedIcon /> }
         ].map((item, index) => (
           <Link to={item.route} key={item.text} style={{ textDecoration: 'none', color: 'inherit' }}>
             <ListItem disablePadding>
@@ -61,26 +68,6 @@ export default function ResponsiveDrawer(props) {
       <Divider />
     </div>
   );
-
-  // const drawer = (
-  //   <div>
-  //     <Toolbar />
-  //     <Divider />
-  //     <List>
-  //       {['Gallery', 'About us', 'Store', 'Contact'].map((text, index) => (
-  //         <ListItem key={text} disablePadding>
-  //           <ListItemButton>
-  //             <ListItemIcon>
-  //               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-  //             </ListItemIcon>
-  //             <ListItemText primary={text} />
-  //           </ListItemButton>
-  //         </ListItem>
-  //       ))}
-  //     </List>
-  //     <Divider />
-  //   </div>
-  // );
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -142,9 +129,9 @@ export default function ResponsiveDrawer(props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-        <Typography paragraph>
-          React router practice.
-        </Typography>
+        <Content>
+          {props.children}
+        </Content>
       </Box>
     </Box>
   );

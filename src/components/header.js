@@ -49,7 +49,7 @@ const Header = ({ handleDrawerToggle }) => {
         <Typography variant="h6" noWrap component="div">
           {title}
         </Typography>
-        <MuiSwitch sx={{ mr: 2 }} checked={darkTheme} onClick={toggleTheme} />
+        <MuiSwitch sx={{ mr: 2 }} onChange={toggleTheme} />
       </Toolbar>
     </AppBar>
   );
