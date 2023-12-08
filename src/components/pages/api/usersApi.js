@@ -14,7 +14,7 @@ export function UserFetching() {
     axios
       .get("https://jsonplaceholder.typicode.com/users")
       .then((res) => {
-        console.log(res);
+        console.log('Users fetched',res);
         setUsers(res.data);
       })
       .catch((err) => {
@@ -22,19 +22,6 @@ export function UserFetching() {
       });
   };
 
-  //   return (
-  //     <Box>
-  //       {users.map((user) => (
-  //         <Box>
-  //           <h1>{user.id}</h1>
-  //           <h2>{user.username}</h2>
-  //           <h3>{user.name}</h3>
-  //           <p>{user.email}</p>
-  //           <p>{user.lat}</p>
-  //         </Box>
-  //       ))}
-  //     </Box>
-  //   );
   return (
     <Box
       sx={{

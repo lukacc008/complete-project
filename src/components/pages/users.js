@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../header.js";
 import ResponsiveDrawer from "../sidebar";
-import UserFetching from "./api/users.js";
+import UserFetching from "./api/usersApi.js";
 
 export default function Users() {
   return (

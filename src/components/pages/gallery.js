@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../header.js";
 import ResponsiveDrawer from "../sidebar";
-import GalleryFetching from "./api/gallery.js";
+import GalleryFetching from "./api/galleryApi.js";
 
 export default function Gallery() {
   return (
