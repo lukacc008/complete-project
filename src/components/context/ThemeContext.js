@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from "react";
 
 const ThemeContext = createContext();
 
@@ -7,18 +7,23 @@ export const useTheme = () => {
 };
 
 export const TemaPrava = ({ children }) => {
-  const [darkTheme, setDarkTheme] = useState(false);
+  const [darkTheme, setDarkTheme] = useState(() => {
+    const storedTheme = localStorage.getItem("darkTheme");
+    return storedTheme ? JSON.parse(storedTheme) : false;
+  });
 
   const toggleTheme = () => {
-    setDarkTheme((prevTheme) => !prevTheme);
+    const newTheme = !darkTheme;
+    setDarkTheme(newTheme);
+    localStorage.setItem("darkTheme", JSON.stringify(newTheme));
   };
 
   const theme = {
     darkTheme,
     toggleTheme,
   };
-// console.log('darkTheme', darkTheme);
-// console.log('togggleTheme', toggleTheme);
+  // console.log('darkTheme', darkTheme);
+  // console.log('togggleTheme', toggleTheme);
   return (
     <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
   );

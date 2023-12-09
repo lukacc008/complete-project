@@ -2,15 +2,16 @@ import React from "react";
 
 import { useLocation } from "react-router-dom";
 
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import Typography from '@mui/material/Typography';
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import Typography from "@mui/material/Typography";
 
-import { useTheme } from '../components/context/ThemeContext';
+import { useTheme } from "../components/context/ThemeContext";
 
-import MuiSwitch from '../components/buttons/muiswitch';
+// import Switch from "@mui/material/Switch";
+// import MuiSwitch from '../components/buttons/muiswitch';
 
 const drawerWidth = 240;
 
@@ -18,7 +19,7 @@ const Header = ({ handleDrawerToggle }) => {
   const location = useLocation();
   const path = location.pathname;
 
-  const { darkTheme, toggleTheme } = useTheme();
+  const { toggleTheme } = useTheme();
 
   const getTitleFromPath = (path) => {
     const parts = path.split("/");
@@ -36,20 +37,30 @@ const Header = ({ handleDrawerToggle }) => {
         ml: { sm: `${drawerWidth}px` },
       }}
     >
-      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <IconButton
           color="inherit"
           aria-label="open drawer"
           edge="start"
           onClick={handleDrawerToggle}
-          sx={{ mr: 2, display: { sm: 'none' } }}
+          sx={{ mr: 2, display: { sm: "none" } }}
         >
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" noWrap component="div">
           {title}
         </Typography>
-        <MuiSwitch sx={{ mr: 2 }} onChange={toggleTheme} />
+        <input type="checkbox" onChange={toggleTheme} />
+        {/* <Switch
+          onChange={toggleTheme}
+          sx={{
+            "&.Mui-checked": {
+              color: "black",
+            },
+          }}
+        /> */}
+        {/* mui dugme koje iz nekog razloga ne moze da koristi toggleTheme funkciju */}
+        {/* <MuiSwitch type="checkbox" sx={{ mr: 2 }} onChange={toggleTheme} /> */}
       </Toolbar>
     </AppBar>
   );
