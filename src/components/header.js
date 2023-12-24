@@ -10,9 +10,6 @@ import Typography from "@mui/material/Typography";
 
 import { useTheme } from "../components/context/ThemeContext";
 
-// import Switch from "@mui/material/Switch";
-// import MuiSwitch from '../components/buttons/muiswitch';
-
 const drawerWidth = 240;
 
 const Header = ({ handleDrawerToggle }) => {
@@ -51,16 +48,6 @@ const Header = ({ handleDrawerToggle }) => {
           {title}
         </Typography>
         <input type="checkbox" onChange={toggleTheme} />
-        {/* <Switch
-          onChange={toggleTheme}
-          sx={{
-            "&.Mui-checked": {
-              color: "black",
-            },
-          }}
-        /> */}
-        {/* mui dugme koje iz nekog razloga ne moze da koristi toggleTheme funkciju */}
-        {/* <MuiSwitch type="checkbox" sx={{ mr: 2 }} onChange={toggleTheme} /> */}
       </Toolbar>
     </AppBar>
   );

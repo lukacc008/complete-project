@@ -12,7 +12,7 @@ export function GalleryFetching() {
     axios
       .get("https://picsum.photos/v2/list")
       .then((res) => {
-        console.log('Fetched gallery data',res);
+        console.log("Fetched gallery data", res);
         setPictures(res.data);
       })
       .catch((err) => {
@@ -21,12 +21,14 @@ export function GalleryFetching() {
   };
 
   return (
-    <Box sx={{
+    <Box
+      sx={{
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "space-between",
         gap: "5px",
-      }}>
+      }}
+    >
       {pictures.map((picture) => (
         <Box key={picture.id}>
           <h1>{picture.id}</h1>
